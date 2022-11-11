@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang='en'>
+<style>
+    body{
+        background-color: #ffffff;
+        font-family: arial;
+        background-color: rgba(212, 213, 213, 0.94);
+    }
+
+    .formulario{
+        border-radius: 1vh;
+        border-style: solid;
+        padding: 1.5vh;
+        background-color: rgba(82, 81, 81, 0.94);
+        width: 60vh;
+        height: 50vh;
+        color: white;
+    }
+
+    .div-botao{
+        margin: 1vh;
+    }
+
+    .botao{
+        color: #ffffff;
+        background-color: #6361f1;
+        border-radius: 1vh;
+        cursor: pointer;
+        height: 7vh;
+    }
+
+    .insercao{
+        border-radius: 1vh;
+        height: 4vh;
+    }
+
+</style>
+<body>
+	<Header></header>
+
+        <center>
+        <div class="formulario">
+            <h1>Calcule seu IMC</h1>
+            <p>
+            <label for="id_peso">Peso: </label>
+            <input class="insercao" type="number" id="id_peso"/>
+            </p>
+            <p>
+            <label for="id_peso">Altura: </label>
+            <input class="insercao" type="number" id="id_altura"/>
+            </p>
+            <p>
+            <label for="id_peso">Sexo: </label>
+            <input class="insercao" type="text" id="id_sexo"/>
+            </p>
+            <br>
+            <div class="div-botao">
+            <button class="botao" onclick="calculaIMC()">Calcular</button>
+            </div>
+            <p id="resultado"></p>
+        </div>
+        </center>
+
+</body>
+<script>
+	function calculaIMC(){
+		let peso = document.getElementById('id_peso').value;
+		let altura = document.getElementById('id_altura').value;
+		let sexo = document.getElementById('id_sexo').value;
+		let resultado = document.getElementById('resultado');
+		let imc = peso/(altura**2);
+		console.log(imc);
+
+
+        if(sexo=='f') {
+            if (imc < 19.1) {
+                resultado.innerHTML = 'Abaixo do peso';
+            } else if (imc <= 25.8) {
+                resultado.innerHTML = 'No peso normal';
+            } else if (imc <= 27.3) {
+                resultado.innerHTML = 'Marginalmente acima do peso';
+            } else if (imc <= 32.3) {
+                resultado.innerHTML = 'Acima do peso ideal';
+            } else if (imc > 32.3) {
+                resultado.innerHTML = 'Obeso';
+            }
+        }else if (sexo=='m'){
+			if (imc < 20.7){
+				resultado.innerHTML = 'Abaixo do peso';
+			}else if(imc <= 26.4){
+				resultado.innerHTML = 'No peso normal';
+			}else if(imc<=27.8){
+				resultado.innerHTML = 'Marginalmente acima do peso';
+			}else if(imc<=31.1){
+				resultado.innerHTML = 'Acima do peso ideal';
+			}else if(imc>31.1){
+				resultado.innerHTML = 'Obeso';
+			}
+		}else{
+			resultado.innerHTML('');
+		}
+	}
+</script>
+</html>
